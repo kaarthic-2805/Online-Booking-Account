@@ -1,0 +1,151 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Online Bank Account</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f0f0f0;
+            }
+
+            header {
+                background-color: #3498db;
+                color: white;
+                padding: 20px;
+                text-align: center;
+                font-size: 24px;
+            }
+
+            .container {
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: #fff;
+                border-radius: 5px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            form {
+                margin: 20px 0;
+            }
+
+            label, input, select {
+                display: block;
+                width: 100%;
+                margin: 5px 0;
+            }
+
+            input[type="text"], input[type="password"], select {
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+            }
+
+            button {
+                background-color: #3498db;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 3px;
+                cursor: pointer;
+            }
+
+            .error-message {
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+
+        <header>Online Bank Account</header>
+        <div class="container">
+            <h2>Login</h2>
+
+            <form id="login-form">
+                <label for="login-username">Username:</label>
+                <input style="border-radius: 20px; width: 750px;" type="text" id="login-username" name="login-username" required>
+
+                <label for="login-password">Password:</label>
+                <input style="border-radius: 20px; width: 750px;" type="password" id="login-password" name="login-password" required>
+
+                <button type="submit">Login</button>
+            </form>
+            <div class="error-message" id="login-error-message"></div>
+
+            <h2>Register</h2>
+
+            <form id="register-form">
+                <label for="register-username">Username:</label>
+                <input style="border-radius: 20px; width: 750px;" type="text" id="register-username" name="register-username" required>
+
+                <label for="register-password">Password:</label>
+                <input style="border-radius: 20px; width: 750px;" type="password" id="register-password" name="register-password" required>
+
+                <label for="register-account-type">Account Type:</label>
+                <select style="border-radius: 20px; width: 770px;" id="register-account-type" name="register-account-type" required>
+                    <option value="">Select Account Type</option>
+                    <option value="Savings">Savings</option>
+                    <option value="Checking">Checking</option>
+                </select>
+
+                <button type="submit">Register</button>
+            </form>
+
+            <div class="error-message" id="register-error-message"></div>
+
+            <h2>Dashboard</h2>
+
+            <form id="dashboard-form">
+                <label for="dashboard-account-type">Select Account Type:</label>
+                <select style="border-radius: 20px; width: 770px;" id="dashboard-account-type" name="dashboard-account-type">
+                    <option value="Savings">Savings</option>
+                    <option value="Checking">Checking</option>
+                </select>
+
+                <button type="submit">Go</button>
+            </form>
+        </div>
+
+        <script>
+            
+            document.getElementById('login-form').addEventListener('submit', function (e) {
+                e.preventDefault();
+                const username = document.getElementById('login-username').value;
+                const password = document.getElementById('login-password').value;
+
+                
+                if (username === "demo" && password === "demo123") {
+                    alert("Login successful!");
+                } else {
+                    document.getElementById('login-error-message').textContent = "Invalid username or password.";
+                }
+            });
+
+            document.getElementById('register-form').addEventListener('submit', function (e) {
+                e.preventDefault();
+                const username = document.getElementById('register-username').value;
+                const password = document.getElementById('register-password').value;
+                const accountType = document.getElementById('register-account-type').value;
+
+                
+                if (username && password && accountType) {
+                    alert("Registration successful!");
+                } else {
+                    document.getElementById('register-error-message').textContent = "Please fill in all required fields.";
+                }
+            });
+
+            document.getElementById('dashboard-form').addEventListener('submit', function (e) {
+                e.preventDefault();
+                const accountType = document.getElementById('dashboard-account-type').value;
+
+            
+                alert(`Viewing ${accountType} account dashboard.`);
+            });
+        </script>
+    </body>
+    </html>
